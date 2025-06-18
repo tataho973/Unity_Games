@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Taho
+namespace Cube_Click_Score
 {
     public class Menu : MonoBehaviour
     {

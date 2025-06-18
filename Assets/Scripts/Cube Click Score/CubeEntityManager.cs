@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using LTX.Singletons;
 
-namespace Taho.Game
+namespace Cube_Click_Score
 {
     public class CubeEntityManager : MonoSingleton<CubeEntityManager>
     {

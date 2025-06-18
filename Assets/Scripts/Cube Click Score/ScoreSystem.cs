@@ -1,8 +1,7 @@
-using System;
 using LTX.Singletons;
 using UnityEngine;
 
-namespace Taho.Game
+namespace Cube_Click_Score
 {
     public class ScoreSystem : MonoSingleton<ScoreSystem>
     {

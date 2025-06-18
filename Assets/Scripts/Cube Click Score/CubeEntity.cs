@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
-namespace Taho.Game
+namespace Cube_Click_Score
 {
     public class CubeEntity : MonoBehaviour, IPointerDownHandler
     {

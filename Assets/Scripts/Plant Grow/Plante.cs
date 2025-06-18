@@ -1,13 +1,16 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Taho.Poussetheet
+namespace Plant_Grow
 {
     public class Plante : MonoBehaviour, IPointerDownHandler
     {
-        public PlanteData Data;
-        public SpriteRenderer SR;
-
+        [ SerializeField] private PlanteData Data;
+        [ SerializeField] private SpriteRenderer SR;
+        [ SerializeField] private SpriteRenderer Outline; 
+        
         public bool IsHarvestable => growthStage >= Data.MaxGrowthStage && !IsHarvested;
         public bool IsHarvested;
 
@@ -21,10 +24,8 @@ namespace Taho.Poussetheet
 
         private void Update()
         {
-            SR.color = IsHarvestable ? Color.green : Color.white;
-            
-            currentTimer += Time.deltaTime + Random.Range(-0.02f, 0.02f);
-            if (currentTimer >= Data.GrowthTime && !IsHarvested)
+            currentTimer += Time.deltaTime;// + Random.Range(-0.02f, 0.02f);
+            if (currentTimer >= Data.GrowthTime && !IsHarvestable && !IsHarvested)
             {
                 //Debug.Log($"Growing plant: {name} => {currentTimer}");
                 currentTimer = 0f;
@@ -39,6 +40,11 @@ namespace Taho.Poussetheet
                 growthStage++;
                 UpdateSprite();
             }
+            if (IsHarvestable)
+            {
+                Outline.DOFade(1f, 0.6f).SetLoops(-1, LoopType.Yoyo);
+                Outline.gameObject.SetActive(true); 
+            }
         }
 
         private void UpdateSprite()
@@ -46,6 +52,10 @@ namespace Taho.Poussetheet
             SR.sprite = Data.GrowthSprites[growthStage];
         }
 
+        /// <summary>
+        /// fonction appelé p récuperer plante (click du joueur)
+        /// </summary>
+        /// <returns>si il a réussi à récupérer</returns>
         public bool TryToHarvest()
         {
             if (IsHarvestable)
@@ -53,6 +63,8 @@ namespace Taho.Poussetheet
                 IsHarvested = true;
                 SR.sprite = Data.HarvestedSprite;
                 Destroy(gameObject, 2f);
+                Outline.gameObject.SetActive(false);
+                Player.Instance.Inventory.AddItem(Data.ItemType, 1 );
                 return true;
             }
 
@@ -63,5 +75,10 @@ namespace Taho.Poussetheet
         {
             bool success = TryToHarvest();
         }
-    }
+
+        private void OnDestroy()
+        {
+            Outline.DOKill();
+        }
+    } 
 }

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PlanteData
   m_EditorClassIdentifier: 
   GrowthSprites:
-  - {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
-  - {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  - {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  HarvestedSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  GrowthSpeed: 3.5
-  MaxGrowthStage: 2
+  - {fileID: 21300000, guid: ddc89ab111a78524ea08b20441ee9819, type: 3}
+  - {fileID: 21300000, guid: 0f85db70a1ce7fe48b752b33c687ef46, type: 3}
+  - {fileID: 21300000, guid: 48d8bc333d020bc42bc63af704080ae9, type: 3}
+  - {fileID: 21300000, guid: c21090c3b0d435c45aac85e1860ddfb6, type: 3}
+  HarvestedSprite: {fileID: 21300000, guid: 52e9183ae5a1dd6468f267a602743f7e, type: 3}
+  GrowthTime: 2
+  MaxGrowthStage: 3
