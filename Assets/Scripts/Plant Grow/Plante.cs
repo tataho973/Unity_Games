@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -17,12 +16,12 @@ namespace Plant_Grow
         private int growthStage;
         private float currentTimer;
 
-        private void Awake()
+        public void Initialize()
         {
             UpdateSprite();
         }
 
-        private void Update()
+        public void Refresh()
         {
             currentTimer += Time.deltaTime;// + Random.Range(-0.02f, 0.02f);
             if (currentTimer >= Data.GrowthTime && !IsHarvestable && !IsHarvested)

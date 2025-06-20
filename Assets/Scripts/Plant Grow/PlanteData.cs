@@ -13,6 +13,7 @@ namespace Plant_Grow
 
         public int MaxGrowthStage = 2;
 
+        public Plante PlantePrefab;
         [field: SerializeField] public ItemType ItemType { get; private set; }
     }
 }
